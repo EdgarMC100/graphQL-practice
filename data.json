@@ -1,0 +1,33 @@
+{
+    "courses":[
+        {
+            "id":1,
+            "title":"Curso de creación de Videojuegos",
+            "description":"A good course",
+            "authors":["Alberto Pérez-Bermejo","Carlos González Tardón","Luis Díaz Peralta","Isabel Royán","Antonio Serón Molina"],
+            "topic":"video juegos",
+            "category":"desarrollo",
+            "url":"https://platzi.com/videojuegos/"
+        },
+        {
+            "id":2,
+            "title":"Curso de diseño y prototipado de personajes",
+            "description":"An amazing  course",
+            "authors":"Freddy Vega",
+            "topic":"video juegos",
+            "category":"desarrollo",
+            "url":"https://platzi.com/videojuegos/"
+        },
+        {
+            "id":3,
+            "title":"Curso Basico de Jenkis",
+            "description":"A useful course",
+            "authors":["Freddy Vega","Christian Vander"],
+            "topic":"servidores",
+            "category":"desarrollo",
+            "url":"https://platzi.com/videojuegos/"
+        }
+
+
+    ]
+}

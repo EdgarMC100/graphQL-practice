@@ -1,18 +1,67 @@
 const express = require("express");
 const {graphqlHTTP} = require("express-graphql");
-
 const app = express();
+const { courses } = require("./data.json");
+
 //Used to write Schemas
 const {buildSchema} = require("graphql");
 
 const schema = buildSchema(`
 	type Query{
-		message:String
- 	}
+		course(id: Int!) : [Course]
+		courses(topic: String!): [Course]
+	}
+
+	type Mutation{
+		updateCourseTopic(id: Int!, topic:String!): Course
+	}	
+
+	type Course{
+		id:Int
+		title: String
+		description: String
+		topic: String
+		category: String
+		url: String
+	} 
 `);
 
+let getCourse = (args) =>{
+	let id = args.id;
+	// return courses.find(course => course.id === id);
+	
+	//or
+	return courses.filter(course => {
+		return course.id === id;
+	})
+
+}
+
+let getCourses = (args) =>{
+	if(args.topic){
+		let topic = args.topic;
+		return courses.filter(course => course.topic === topic);
+	}else{
+		return courses;
+	}
+}
+
+let updateCourseTopic = ({id, topic})=>{
+	courses.map(course =>{
+		if(course.id == id){
+			course.topic = topic;
+			return course;
+		}
+	})
+	return courses.filter(course=>course.id ===id)[0]
+}
+
+//Functions assigned to object fields
 const root={
-	message:()=>"hello world!"
+	course: getCourse,
+	courses: getCourses,
+	updateCourseTopic: updateCourseTopic
+
 };
 
 //Middleware
