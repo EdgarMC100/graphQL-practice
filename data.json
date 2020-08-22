@@ -8,6 +8,14 @@
             "topic":"video juegos",
             "category":"desarrollo",
             "url":"https://platzi.com/videojuegos/"
+        },        {
+            "id":1,
+            "title":"Curso de creación de Videojuegos",
+            "description":"A good course",
+            "authors":["Alberto Pérez-Bermejo","Carlos González Tardón","Luis Díaz Peralta","Isabel Royán","Antonio Serón Molina"],
+            "topic":"video juegos",
+            "category":"desarrollo",
+            "url":"https://platzi.com/videojuegos/"
         },
         {
             "id":2,

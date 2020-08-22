@@ -8,8 +8,9 @@ const {buildSchema} = require("graphql");
 
 const schema = buildSchema(`
 	type Query{
-		course(id: Int!) : [Course]
+		course(id: Int!) : Course
 		courses(topic: String!): [Course]
+		allcourses:[Course]
 	}
 
 	type Mutation{
@@ -33,10 +34,13 @@ let getCourse = (args) =>{
 	//or
 	return courses.filter(course => {
 		return course.id === id;
-	})
+	})[0]
 
 }
 
+let getAllCourses = ()=>{
+	return courses;
+}
 let getCourses = (args) =>{
 	if(args.topic){
 		let topic = args.topic;
@@ -52,6 +56,7 @@ let updateCourseTopic = ({id, topic})=>{
 			course.topic = topic;
 			return course;
 		}
+
 	})
 	return courses.filter(course=>course.id ===id)[0]
 }
@@ -60,7 +65,8 @@ let updateCourseTopic = ({id, topic})=>{
 const root={
 	course: getCourse,
 	courses: getCourses,
-	updateCourseTopic: updateCourseTopic
+	updateCourseTopic: updateCourseTopic,
+	allcourses: getAllCourses
 
 };
 
@@ -76,5 +82,5 @@ app.use('/graphql',graphqlHTTP({
 
 const port = process.env.PORT || 4000;
 
-app.listen(port,()=> console.log('Server is reade to listen any request on port 3000'));
+app.listen(port,()=> console.log('Server is ready to listen any request on port 3000'));
 
